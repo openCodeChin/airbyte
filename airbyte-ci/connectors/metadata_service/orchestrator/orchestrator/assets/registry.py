@@ -205,7 +205,7 @@ def generate_and_persist_registry(
     file_handle = persist_registry_to_json(registry_model, registry_name, registry_directory_manager)
 
     metadata = {
-        "gcs_path": MetadataValue.url(file_handle.gcs_path),
+        "gcs_path": MetadataValue.url(file_handle.public_url),
     }
 
     return Output(metadata=metadata, value=registry_model)
