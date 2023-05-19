@@ -135,7 +135,7 @@ class Data(BaseModel):
     githubIssueLabel: str
     maxSecondsBetweenMessages: Optional[int] = Field(
         None,
-        description="Number of seconds allowed between 2 airbyte protocol messages. The source will timeout if this delay is reach",
+        description="Maximum delay between 2 airbyte protocol messages, in second. The source will timeout if this delay is reached",
     )
     releaseDate: Optional[date] = Field(
         None,
@@ -148,6 +148,10 @@ class Data(BaseModel):
         "api", "database", "file", "custom", "message_queue", "unknown"
     ]
     releaseStage: Literal["alpha", "beta", "generally_available", "source"]
+    tags: Optional[List[str]] = Field(
+        None,
+        description="An array of tags that describe the connector. E.g: language:python, keyword:rds, etc.",
+    )
     registries: Optional[Registry] = None
     allowedHosts: Optional[AllowedHosts] = None
     normalizationConfig: Optional[NormalizationDestinationDefinitionConfig] = None
